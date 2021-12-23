@@ -1,13 +1,11 @@
-const isProduction = process.env.NODE_ENV === 'production';
-
 module.exports = {
-  "plugins": ["@babel/syntax-dynamic-import"],
-  "presets": [
+	"plugins": ["@babel/syntax-dynamic-import"],
+	"presets": [
 		["@babel/preset-env", {
 			"useBuiltIns": "usage",
-			"targets": { "esmodules": isProduction },
+			"targets": { "esmodules": true },
 			"modules": false
 		}],
 		"@babel/preset-react",
-  ]
+	]
 }

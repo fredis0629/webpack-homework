@@ -14,14 +14,14 @@
   "author": "",
   "license": "ISC",
   "browserslist": {
-    "development": [
+    "old": [
       "last 2 versions",
       "Safari >= 10",
       "iOS >= 10",
       "not ie <= 10",
       "> 1%"
     ],
-    "production": [
+    "modern": [
       "last 2 Chrome versions",
       "last 2 ChromeAndroid versions",
       "last 2 Firefox versions",

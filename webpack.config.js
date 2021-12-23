@@ -10,13 +10,33 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 
-
+const targets = [
+	{
+		target: 'browserslist:modern',
+		output: {
+			path: path.resolve(__dirname, 'dist/new'),
+			filename: '[hash]-index.js',
+		},
+	},
+	{
+		target: 'browserslist:old',
+		output: {
+			path: path.resolve(__dirname, 'dist/old'),
+			filename: '[hash]-index.js',
+		},
+	}
+]
 
 const config = {
     entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-    },
+	// entry: {
+	// 	"brousers/new/index": ,
+	// 	"brousers/old/index": './src/index.js',
+	// },
+	// output: {
+	// 	path: path.resolve(__dirname, 'dist'),
+	// 	filename: "[name].js"
+	// },
     devServer: {
         open: true,
         host: 'localhost',
@@ -66,5 +86,23 @@ module.exports = () => {
     } else {
         config.mode = 'development';
     }
-    return config;
+		// config.module.rules.push({
+		// 	test: /\.(js|jsx)$/i,
+		// 	exclude: /(node_modules|bower_components)/,
+		// 	use: {
+		// 		loader: 'babel-loader',
+		// 		options: {
+		// 			plugins: ["@babel/syntax-dynamic-import"],
+		// 			presets: [
+		// 				["@babel/preset-env", {
+		// 					"useBuiltIns": "usage",
+		// 					"targets": { "esmodules": true },
+		// 					"modules": false
+		// 				}],
+		// 				"@babel/preset-react",
+		// 			]
+		// 		}
+		// 	}
+		// })
+    return targets.map(target => ({...target, ...config}));
 };
