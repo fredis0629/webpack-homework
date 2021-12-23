@@ -1,0 +1,11 @@
+root = true
+[*]
+end_of_line = lf
+insert_final_newline = true
+max_line_length=120
+[{*.js,*.json}]
+tab_width = 2
+indent_style = tab
+indent_size = tab
+[pnpm-lock.yaml]
+max_line_length = off
