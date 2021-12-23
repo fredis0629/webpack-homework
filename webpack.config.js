@@ -29,14 +29,6 @@ const targets = [
 
 const config = {
     entry: './src/index.js',
-	// entry: {
-	// 	"brousers/new/index": ,
-	// 	"brousers/old/index": './src/index.js',
-	// },
-	// output: {
-	// 	path: path.resolve(__dirname, 'dist'),
-	// 	filename: "[name].js"
-	// },
     devServer: {
         open: true,
         host: 'localhost',
@@ -45,9 +37,6 @@ const config = {
         new HtmlWebpackPlugin({
             template: 'index.html',
         }),
-
-        // Add your plugins here
-        // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],
     module: {
         rules: [
@@ -67,9 +56,6 @@ const config = {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
                 type: 'asset',
             },
-
-            // Add your rules for custom modules here
-            // Learn more about loaders from https://webpack.js.org/loaders/
         ],
     },
 };
@@ -86,23 +72,5 @@ module.exports = () => {
     } else {
         config.mode = 'development';
     }
-		// config.module.rules.push({
-		// 	test: /\.(js|jsx)$/i,
-		// 	exclude: /(node_modules|bower_components)/,
-		// 	use: {
-		// 		loader: 'babel-loader',
-		// 		options: {
-		// 			plugins: ["@babel/syntax-dynamic-import"],
-		// 			presets: [
-		// 				["@babel/preset-env", {
-		// 					"useBuiltIns": "usage",
-		// 					"targets": { "esmodules": true },
-		// 					"modules": false
-		// 				}],
-		// 				"@babel/preset-react",
-		// 			]
-		// 		}
-		// 	}
-		// })
     return targets.map(target => ({...target, ...config}));
 };
